@@ -1,39 +1,26 @@
 from turtle import Turtle, exitonclick
 
-def draw_balloon(turtle, radius, balloon_color, string_length):
-    # Draw the balloon (circle)
+def draw_square(turtle, side_length):
+    # Draw a square
     turtle.penup()
-    turtle.goto(0, -radius)  # Position the turtle to start drawing the balloon
+    turtle.goto(-side_length / 2, side_length / 2)  # Move to the starting position
     turtle.pendown()
-    turtle.color(balloon_color)  # Set the color of the balloon
+    turtle.color("red")  # Set the color for the square
     turtle.begin_fill()
-    turtle.circle(radius)  # Draw the balloon
-    turtle.end_fill()
     
-    # Draw the balloon string
-    turtle.penup()
-    turtle.goto(0, -radius)  # Move to the bottom of the balloon
-    turtle.pendown()
-    turtle.color("black")  # Set the color of the string
-    turtle.right(90)
-    turtle.forward(string_length)  # Draw the string
+    for _ in range(4):
+        turtle.forward(side_length)
+        turtle.right(90)  # Turn 90 degrees to create the square
     
-    # Draw a small oval or circle at the end of the string
-    turtle.penup()
-    turtle.goto(0, -radius - string_length)  # Move to the end of the string
-    turtle.pendown()
-    turtle.color("black")  # Set the color for the end of the string
-    turtle.begin_fill()
-    turtle.circle(5)  # Draw a small circle at the end of the string
     turtle.end_fill()
 
 def draw_shapes():
     bob = Turtle()
-    bob.speed(2)
-    bob.pensize(2)
+    bob.speed()
+    bob.pensize()
     bob.shape("turtle")
     
-    draw_balloon(bob, 50, "red", 150)  # Draw a balloon with radius 50, color red, and string length 150
+    draw_square(bob, 100)  # Draw a square with sides of 100 units
 
     bob.hideturtle()
 
